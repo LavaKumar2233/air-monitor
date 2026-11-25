@@ -1,0 +1,312 @@
+
+/* =========================================
+   AIR MONITOR - PROFESSIONAL DASHBOARD
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #0b1118;
+    --surface: #141e29;
+    --surface-light: #1c2a37;
+
+    --primary: #43d9b5;
+    --secondary: #35b8d4;
+
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+
+    --good: #43d9b5;
+    --moderate: #facc15;
+    --poor: #ef4444;
+
+    --border: #263746;
+}
+
+/* PAGE */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.dashboard {
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+    padding: 35px;
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 30px;
+    margin-bottom: 32px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+.header h1 {
+    font-size: 30px;
+    letter-spacing: 4px;
+    color: var(--primary);
+}
+
+.header p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+#connectionStatus {
+    width: fit-content;
+    margin-top: 8px;
+    padding: 8px 14px;
+
+    border-radius: 20px;
+
+    color: var(--secondary);
+    background: rgba(53, 184, 212, 0.12);
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* MAIN CONTENT */
+
+#dashboard-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* HEADINGS */
+
+.section-title {
+    font-size: 20px;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+/* SENSOR CARDS */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    padding: 24px;
+
+    min-height: 155px;
+
+    transition: transform 0.2s ease,
+                border-color 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+}
+
+.card-label {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    margin-bottom: 16px;
+}
+
+.card-value {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 14px;
+    overflow-wrap: anywhere;
+}
+
+/* STATUS INDICATORS */
+
+.status {
+    display: inline-block;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+
+    padding: 7px 12px;
+    border-radius: 20px;
+}
+
+.status-good {
+    color: var(--good);
+    background: rgba(67, 217, 181, 0.12);
+}
+
+.status-moderate {
+    color: var(--moderate);
+    background: rgba(250, 204, 21, 0.12);
+}
+
+.status-poor {
+    color: var(--poor);
+    background: rgba(239, 68, 68, 0.12);
+}
+
+/* PANELS */
+
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px;
+}
+
+.panel h3 {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+/* SIMULATION CONTROLS */
+
+.control-value {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-bottom: 28px;
+
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+input[type="range"]:last-child {
+    margin-bottom: 0;
+}
+
+/* ALERTS */
+
+#alertContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.alert-panel {
+    padding: 18px;
+
+    border-radius: 10px;
+    background: var(--surface-light);
+
+    border-left: 4px solid var(--primary);
+
+    color: var(--text);
+    font-size: 14px;
+}
+
+.alert-panel.warning {
+    border-left-color: var(--moderate);
+}
+
+.alert-panel.danger {
+    border-left-color: var(--poor);
+}
+
+/* CHARTS */
+
+.panel canvas {
+    width: 100% !important;
+    max-height: 300px;
+}
+
+section > .panel + .panel {
+    margin-top: 18px;
+}
+
+/* SYSTEM INFORMATION */
+
+.panel p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.panel p:last-child {
+    margin-bottom: 0;
+}
+
+#lastUpdated {
+    color: var(--primary);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    color: var(--muted);
+
+    font-size: 12px;
+
+    padding: 30px 10px;
+    margin-top: 30px;
+
+    border-top: 1px solid var(--border);
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1050px) {
+
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .dashboard {
+        padding: 16px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        padding: 22px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .card-value {
+        font-size: 27px;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+
+}

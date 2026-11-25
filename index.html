@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Air Monitor | Environmental Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <header class="header">
+            <h1>AIR MONITOR</h1>
+            <p>Environmental Monitoring System</p>
+            <span id="connectionStatus">SIMULATION MODE</span>
+        </header>
+
+        <main id="dashboard-content">
+
+            <section>
+                <h2 class="section-title">Monitoring Overview</h2>
+
+                <div class="dashboard-grid">
+
+                    <div class="card">
+                        <p class="card-label">TEMPERATURE</p>
+                        <div class="card-value" id="temperatureValue">28.5°C</div>
+                        <span class="status status-good" id="temperatureStatus">NORMAL</span>
+                    </div>
+
+                    <div class="card">
+                        <p class="card-label">GAS SENSOR READING</p>
+                        <div class="card-value" id="gasValue">512</div>
+                        <span class="status status-good" id="gasStatus">GOOD</span>
+                    </div>
+
+                    <div class="card">
+                        <p class="card-label">AIR QUALITY</p>
+                        <div class="card-value" id="airValue">GOOD</div>
+                        <span class="status status-good" id="airStatus">GREEN</span>
+                    </div>
+
+                    <div class="card">
+                        <p class="card-label">BUZZER STATUS</p>
+                        <div class="card-value" id="buzzerValue">OFF</div>
+                        <span class="status status-good" id="buzzerStatus">INACTIVE</span>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="section-title">Sensor Simulation Controls</h2>
+
+                <p class="card-label">TEMPERATURE SENSOR</p>
+
+                <div class="control-value">
+                    <span id="temperatureInputValue">28.5°C</span>
+                </div>
+
+                <input type="range" id="temperatureInput"
+                    min="-40.2" max="117.2" step="0.1" value="28.5">
+
+                <p class="card-label">GAS SENSOR</p>
+
+                <div class="control-value">
+                    <span id="gasInputValue">512</span>
+                </div>
+
+                <input type="range" id="gasInput"
+                    min="0" max="1023" step="1" value="512">
+            </section>
+
+            <section class="panel">
+                <h2 class="section-title">System Alerts</h2>
+
+                <div id="alertContainer">
+                    <div class="alert-panel">
+                        System operating normally.
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Sensor History</h2>
+
+                <div class="panel">
+                    <h3>Temperature History</h3>
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+
+                <div class="panel">
+                    <h3>Gas Sensor History</h3>
+                    <canvas id="gasChart"></canvas>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="section-title">System Information</h2>
+
+                <p>Operating Mode: Simulation</p>
+                <p>Temperature Sensor: TMP36</p>
+                <p>Gas Sensor: Winsen Gas Sensor</p>
+                <p>Controller: Arduino Uno (simulated)</p>
+
+                <p>
+                    Last Updated:
+                    <span id="lastUpdated">Waiting...</span>
+                </p>
+            </section>
+
+        </main>
+
+        <footer>
+            Air Monitor | Environmental Monitoring System
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
